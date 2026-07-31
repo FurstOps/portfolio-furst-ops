@@ -1,0 +1,61 @@
+/* ═══════════════════════════════════════════════════════════════
+   STYLES GLOBAUX
+   Animations, reset, et imports de fonts
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0a0d0c;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #d8e0dc;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: fadeUp 0.8s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .side-nav {
+    display: none !important;
+  }
+  main {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+/* Liens : pas de soulignement par défaut */
+a {
+  text-decoration: none;
+  color: inherit;
+}
