@@ -169,11 +169,13 @@ export default function ProjectCard({ project }) {
 
               {block.quote && <p style={styles.quote}>"{block.quote}"</p>}
 
-              {block.image && (
-                <div style={styles.imgPlaceholder}>
-                  <span style={styles.imgPlaceholderText}>{block.image}</span>
+              {block.image && <Media item={block.image} />}
+              {block.images && (
+                <div style={styles.mediaGrid}>
+                  {block.images.map((img, k) => <Media key={k} item={img} />)}
                 </div>
               )}
+              {block.video && <Media item={{ loom: block.video }} />}
             </div>
           ))}
         </div>
@@ -196,5 +198,36 @@ export default function ProjectCard({ project }) {
         </div>
       )}
     </article>
+  )
+}
+
+// ─── Média : image réelle, vidéo Loom ou placeholder ───
+// - texte simple  → cadre placeholder en pointillés
+// - { src, alt, caption } → vraie image (fichier dans public/images/)
+// - { loom: 'https://www.loom.com/share/...' } → vidéo Loom intégrée
+function Media({ item }) {
+  if (typeof item === 'string') {
+    return (
+      <div style={styles.imgPlaceholder}>
+        <span style={styles.imgPlaceholderText}>{item}</span>
+      </div>
+    )
+  }
+  if (item.loom) {
+    const embed = item.loom.replace('/share/', '/embed/')
+    return (
+      <figure style={styles.mediaFigure}>
+        <div style={styles.videoWrap}>
+          <iframe src={embed} style={styles.videoFrame} allowFullScreen title={item.caption || 'Démo vidéo'} />
+        </div>
+        {item.caption && <figcaption style={styles.mediaCaption}>{item.caption}</figcaption>}
+      </figure>
+    )
+  }
+  return (
+    <figure style={styles.mediaFigure}>
+      <img src={item.src} alt={item.alt || item.caption || ''} loading="lazy" style={styles.mediaImg} />
+      {item.caption && <figcaption style={styles.mediaCaption}>{item.caption}</figcaption>}
+    </figure>
   )
 }

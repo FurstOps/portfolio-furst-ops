@@ -1,0 +1,14 @@
+Dépose ici tes captures d'écran (png / jpg / webp, idéalement < 500 Ko).
+  - dcartes/  → visuels de l'étude de cas D-Cartes
+  - playoff/  → visuels de l'étude de cas PlayOff Amateurs
+
+Dans src/data/content.js, remplace la ligne placeholder du bloc concerné :
+  image: '[ visuel · ... ]'
+par :
+  image: { src: '/images/playoff/mon-fichier.png', caption: 'Ma légende' },
+
+Plusieurs images côte à côte :
+  images: [ { src: '/images/...', caption: '...' }, { src: '/images/...' } ],
+
+Vidéo Loom (lien de partage) :
+  video: 'https://www.loom.com/share/xxxxxxxx',

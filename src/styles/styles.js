@@ -257,6 +257,24 @@ export const styles = {
     fontSize: '12px', color: '#5a6260', letterSpacing: '0.1em',
     fontFamily: "'JetBrains Mono', monospace",
   },
+  mediaFigure: { margin: '20px 0 0' },
+  mediaImg: {
+    display: 'block', width: '100%', height: 'auto',
+    border: '1px solid rgba(163, 255, 94, 0.2)',
+  },
+  mediaCaption: {
+    marginTop: '8px', fontSize: '11px', color: '#5a6260', letterSpacing: '0.08em',
+    fontFamily: "'JetBrains Mono', monospace",
+  },
+  mediaGrid: {
+    display: 'grid', gap: '16px', maxWidth: '760px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+  },
+  videoWrap: {
+    position: 'relative', paddingBottom: '56.25%', height: 0,
+    border: '1px solid rgba(163, 255, 94, 0.2)',
+  },
+  videoFrame: { position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 },
   scenarioCard: {
     border: '1px solid rgba(163, 255, 94, 0.2)',
     padding: '24px', marginBottom: '16px',

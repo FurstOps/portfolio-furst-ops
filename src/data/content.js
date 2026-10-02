@@ -67,76 +67,173 @@ export const PROJECTS = [
     id: 'dcartes',
     tag: 'case_study_01 · mission_client · association_ADAL',
     title: 'D-Cartes · Programme D-marche®',
-    subtitle: "Refondre l'application de création et de partage de balades d'un programme national de santé publique dédié à la marche et aux seniors.",
-    status: 'EN COURS',
-    period: 'Depuis juin 2026',
-    role: 'Product Builder · dév. assisté par IA',
-    duration: 'Mission au long cours · itérations continues avec retours terrain',
-    stack: 'Conception produit · Dév. assisté par IA · React · PostgreSQL',
+    subtitle: "Reconstruire de A à Z l'application de création et de partage de balades d'un programme national de santé publique dédié à la marche des seniors — de la maquette jusqu'à la mise en production.",
+    status: 'EN RECETTE',
+    period: 'Juin 2026 → mise en ligne visée mi-décembre 2026',
+    role: 'Product Builder solo · dév. assisté par IA (Claude Code)',
+    duration: '4 mois et demi · pilotage en COPIL avec le client · recette terrain',
+    stack: 'React (PWA) · TypeScript · PostgreSQL · Leaflet · Android · OVHcloud (HDS)',
 
     client: {
-      name: 'ADAL — À la Découverte de l\'Âge Libre',
+      name: "ADAL — À la Découverte de l'Âge Libre",
       desc: "association porteuse du programme national D-marche®, programme motivationnel de marche reconnu par Santé Publique France, partenaire du programme ICOPE et certifié Facile À Lire et à Comprendre.",
     },
 
     highlights: [
-      { num: '2', label: 'apps refondues' },
-      { num: '2', label: 'formats de fiche' },
-      { num: '1', label: 'mode collaboratif' },
-      { num: 'GPS', label: 'tracé mobile' },
-      { num: 'PDF', label: 'fiches auto' },
-      { num: '100%', label: 'pensé seniors' },
+      { num: '99+', label: 'items livrés & documentés' },
+      { num: '4', label: 'COPIL client' },
+      { num: '29', label: 'demandes livrées en 3 jours' },
+      { num: '5', label: 'versions Android publiées' },
+      { num: '2', label: 'formats de fiche PDF' },
+      { num: '0', label: 'service tiers à l\'usage' },
     ],
 
-    pullQuote: "La technique au service du terrain : chaque écran finit entre les mains de vrais marcheurs.",
+    pullQuote: "Mesurer avant de coder : chaque écran finit entre les mains de vrais marcheurs seniors.",
+
+    painPoints: [
+      {
+        icon: '⊟',
+        title: 'Une maquette sans données',
+        desc: "Une app de création et un annuaire public existaient, mais tournaient sur des données de démonstration.",
+      },
+      {
+        icon: '⌂',
+        title: 'Une plateforme vieillissante',
+        desc: "L'existant reposait sur une technologie ancienne, difficile à faire évoluer et à maintenir.",
+      },
+      {
+        icon: '⚕',
+        title: 'Des contraintes santé fortes',
+        desc: 'Programme de santé publique : hébergement de données de santé (HDS) et RGPD non négociables.',
+      },
+      {
+        icon: '◎',
+        title: 'Un public senior',
+        desc: "Des utilisateurs sur le terrain, au téléphone, parfois sans réseau : zéro place pour la complexité.",
+      },
+    ],
 
     phases: [
       {
         badge: 'PHASE 01',
-        title: 'Comprendre le programme & cadrer le produit',
-        meta: 'Cadrage · cahier des charges ADAL · conception',
+        title: 'Brancher la maquette sur le réel',
+        meta: 'Fin juin → juillet 2026 · données réelles · terrain',
         blocks: [
           {
-            title: 'Partir du besoin réel, pas de la techno',
-            text: "Le programme D-marche® s'appuie sur un réseau national d'intervenants et de marcheurs. L'enjeu : leur donner un outil **simple**, accessible aux seniors, pour créer et partager des balades — sans jargon ni friction.",
+            title: 'De la démo au produit, écran par écran',
+            text: "En quelques jours, la création de balade, la **capture GPS réelle**, la modération et l'annuaire public fonctionnent sur de vraies données. Les **29 balades historiques** sont reprises sans perte.",
             bullets: [
-              "Lecture du cahier des charges de l'association (formats de fiche, informations \"office de tourisme\" obligatoires)",
-              'Priorité absolue à la simplicité et à la lisibilité (public senior, certification FALC)',
-              'Philosophie produit : **créer vite** une balade, la **compléter ensuite**',
+              "Application **installable** (PWA) qui fonctionne hors connexion : aucune donnée perdue quand le réseau coupe",
+              "Points d'intérêt typés (vue, commodité, danger…) et photos compressées sur le téléphone",
+              'Annuaire public filtrable, en liste ou sur carte',
+              "Diagnostic GPS qui **explique lui-même** la cause d'une panne et guide l'utilisateur",
+            ],
+          },
+          {
+            title: 'Marcher à plusieurs, en temps réel',
+            text: "Invitation par code ou QR, tracé partagé en direct, **passage de relais automatique** si le responsable perd le signal. Choix assumé : une synchronisation simple et robuste plutôt qu'un temps réel complexe, mieux adaptée aux réseaux mobiles. Validé sur deux téléphones réels : **0 doublon, 0 point perdu**.",
+            userJourney: [
+              '📲 Code / QR',
+              '🚶 Tracé partagé',
+              '🔁 Relais auto',
+              '✅ Clôture pour tous',
             ],
           },
         ],
       },
       {
         badge: 'PHASE 02',
-        title: 'Construire l\'application',
-        meta: 'App de création · portail public · espace membre',
+        title: "Sortir de l'ancienne plateforme",
+        meta: 'Juillet 2026 · architecture · mise en ligne',
+        blocks: [
+          {
+            title: '3 contraintes qui ont tout décidé',
+            text: "Un seul serveur, un seul langage, facile à maintenir. Le périmètre s'élargit du module cartographique à **toute la plateforme** : back-office, espace membre, site public.",
+            architecture: [
+              { label: '✗ Garder l\'ancien', desc: 'Technologie vieillissante, chaque évolution coûte cher', active: false },
+              { label: '✗ Fusion forcée', desc: 'Deux systèmes à maintenir, fragile', active: false },
+              { label: '✓ Rebuild progressif', desc: "Nouvelle app autonome, l'ancienne sert de filet de sécurité", active: true },
+            ],
+            textAfter: "Le client décide d'**arrêter l'ancienne plateforme** : elle est gelée le 23/07, toute nouveauté se fait désormais dans la v2.",
+          },
+          {
+            title: 'Une revue client, 29 demandes, 3 jours',
+            text: "Après une revue des parcours avec l'association, les **29 demandes** sont livrées en trois jours, dont 11 « gains rapides » en une seule journée — suivies d'un support de COPIL.",
+            bullets: [
+              'Éditeur de tracé pensé pour les seniors : redresser, effacer, redessiner au doigt, annuler pas à pas',
+              'Fiche PDF en 2 formats conformes au gabarit de l\'association',
+              'Supervision intégrée au back-office, défis entre marcheurs, espace « Mon compte » complet',
+            ],
+          },
+          {
+            title: 'Mise en ligne chez un hébergeur certifié santé',
+            text: "Fin juillet, l'environnement de recette est en ligne en France chez **OVHcloud**, dans un cadre **HDS**, avec livraison automatique, chiffrement, sauvegardes quotidiennes **dont la restauration a été testée** — pas seulement décrite.",
+            quote: 'Aucune dépendance à un service tiers au moment de l\'usage : cartes, adresses et correcteur sont hébergés par le projet.',
+          },
+        ],
+      },
+      {
+        badge: 'PHASE 03',
+        title: 'Retours terrain & produit complet',
+        meta: 'Août → septembre 2026 · 4 COPIL · itérations continues',
         blocks: [
           {
             title: 'Créer une balade depuis son téléphone',
-            text: "Tracé du parcours au **GPS** en marchant, ajout de points d'intérêt (repos, patrimoine, commodités…) avec pictogrammes clairs, et photos géolocalisées.",
+            text: "Parcours guidé, adresse de départ suggérée à partir du référentiel officiel des communes, puis capture sur le terrain avec **deux grands boutons** (Étape / Point d'intérêt) : moins d'erreurs de toucher en marchant. Choix guidé par la mesure : 47 % d'étapes, 43 % de points d'intérêt — aucun bouton ne devait dominer.",
+            images: [
+              { src: '/images/dcartes/tableau-de-bord.webp', caption: 'Tableau de bord du marcheur' },
+              { src: '/images/dcartes/creer-balade.webp', caption: 'Création guidée d\'une balade' },
+              { src: '/images/dcartes/hors-ligne.webp', caption: 'Préparer une zone hors ligne' },
+            ],
           },
           {
-            title: 'Des fiches parcours prêtes à partager',
-            text: "Génération de **fiches PDF en 2 formats** — une simplifiée (grand public, à imprimer) et une détaillée — alignées sur le gabarit de l'association : carte, repères, distance / durée / dénivelé, infos d'accès et de confort, variantes.",
+            title: 'Partir sans réseau',
+            text: "Zones de carte téléchargées à l'avance, **poids annoncé avant le téléchargement**, création de balade hors ligne et synchronisation au retour du réseau, sans doublon.",
           },
           {
-            title: 'Marcher à plusieurs, en temps réel',
-            text: 'Un mode **collaboratif** permet de créer et suivre une balade à plusieurs, en direct — pensé pour les sorties de groupe animées par les intervenants du programme.',
+            title: 'Une fiche PDF « carnet de route »',
+            text: "Trois maquettes proposées, la piste retenue en COPIL puis livrée : distance depuis le départ, photos dans le fil du parcours, **profil altimétrique**, variantes « faire moins / faire plus ». Police **Atkinson Hyperlegible** (conçue pour la basse vision), impression noir & blanc pensée pour être pliée.",
+            bullets: [
+              'Dénivelé lu sur le relief IGN plutôt que sur le GPS : 600 m mesurés pour 599 m publiés sur un parcours de référence',
+              'Tracés GPS recalés sur les chemins (3 à 8 % de distance corrigée)',
+              'Test anti-débordement : 10/10 combinaisons passent (6/10 débordaient avant)',
+            ],
           },
           {
-            title: 'Portail public, espace membre & back-office',
-            text: 'Annuaire public des balades de la communauté, espace personnel du marcheur, et outils de modération / supervision pour les animateurs.',
-            quote: "Concevoir pour des seniors, c'est retirer tout ce qui n'est pas essentiel à l'écran.",
+            title: 'Modération, RGPD & challenges',
+            text: "File de validation, **floutage des visages et des plaques** par le modérateur (manuel par choix : un détecteur qui rate un visage pousse à valider sans regarder), nom public au choix (« Prénom N. »), modération des commentaires. Côté motivation : **challenges** individuels ou par équipes, au ton coopératif — sans podium.",
+          },
+          {
+            title: "L'appli Android « D-marche » sur le Play Store",
+            text: "Une application Android dédiée lit le **podomètre** du programme. Cinq versions publiées, dont une corrigée après un bug repéré sur un vrai téléphone ; publique sur le Play Store depuis septembre 2026.",
+          },
+        ],
+      },
+      {
+        badge: 'PHASE 04',
+        title: 'Recette à grande échelle & mise en production',
+        meta: 'Octobre → décembre 2026 · en cours',
+        blocks: [
+          {
+            title: 'Tester avec les vrais utilisateurs, par vagues',
+            text: "Un **guide du testeur** illustré accompagne les correspondants du programme. Une première vague démarre début octobre, une seconde plus large mi-octobre, avec un audit et un durcissement de l'application juste avant.",
+            bullets: [
+              'Recette en 2 vagues, retours traités au fil de l\'eau',
+              'Préproduction prête sur la même infrastructure, sauvegardes testées',
+              'Mise en production visée **mi-décembre 2026**',
+            ],
+            // 👉 Ajouter une démo : video: 'https://www.loom.com/share/XXXXXXXX',
           },
         ],
       },
     ],
 
     learnings: [
-      'Concevoir pour un public senior : simplicité, lisibilité, accessibilité avant tout',
-      "Traduire un cahier des charges associatif en fonctionnalités concrètes et testées sur le terrain",
-      'Livrer du vrai produit, vite, en orchestrant no-code et développement assisté par IA',
+      'Mesurer avant de coder : trois fois, la mesure a révélé un problème différent de celui décrit par le retour utilisateur',
+      'Concevoir pour un public senior : libellés clairs, contraste élevé, chaque bouton grisé accompagné de son explication',
+      'Piloter un client en COPIL : comptes rendus vivants, choix par défaut listés pour validation, registre des sujets clos',
+      "Orchestrer l'IA (Claude Code) avec méthode : journaux de passation, vérification systématique dans un vrai navigateur, runbooks testés",
+      'Livrer un vrai produit, sous contraintes santé (HDS, RGPD), en solo',
     ],
     finalQuote: 'Un produit utile, entre de vraies mains, sur le terrain.',
   },
@@ -368,8 +465,8 @@ export const CONTACT = {
 // ───────────────────────────────────────────────────────────────
 
 export const META = {
-  version: 'v0.3',
-  lastUpdate: '2026.07',
+  version: 'v0.4',
+  lastUpdate: '2026.10',
   location: 'FR · THEYS',
   copyright: '© 2026 — Furst Ops · Theys, FR',
 }
