@@ -1,8 +1,23 @@
+import { useEffect, useState } from 'react'
 import { styles } from '../styles/styles'
 import { parseInline } from './helpers'
 
 export default function ProjectCard({ project }) {
   const p = project
+  const [lightbox, setLightbox] = useState(null) // { src, alt } | null
+
+  // Esc closes the lightbox + lock background scroll while open
+  useEffect(() => {
+    if (!lightbox) return
+    const onKey = (e) => { if (e.key === 'Escape') setLightbox(null) }
+    window.addEventListener('keydown', onKey)
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prevOverflow
+    }
+  }, [lightbox])
 
   return (
     <article style={styles.projectCard}>
@@ -144,7 +159,7 @@ export default function ProjectCard({ project }) {
                       key={k}
                       style={col.active ? { ...styles.archCol, ...styles.archColActive } : styles.archCol}
                     >
-                      <div style={{ ...styles.archColLabel, color: col.active ? '#a3ff5e' : '#ff6b6b' }}>
+                      <div style={{ ...styles.archColLabel, color: col.active ? '#5ea3ff' : '#ff6b6b' }}>
                         {col.label}
                       </div>
                       <div style={styles.archColDesc}>{col.desc}</div>
@@ -169,13 +184,60 @@ export default function ProjectCard({ project }) {
 
               {block.quote && <p style={styles.quote}>"{block.quote}"</p>}
 
-              {block.image && <Media item={block.image} />}
-              {block.images && (
-                <div style={styles.mediaGrid}>
-                  {block.images.map((img, k) => <Media key={k} item={img} />)}
+              {block.images && block.images.length > 0 ? (
+                <div style={block.imagesNarrow ? { ...styles.imgGallery, ...styles.imgGalleryNarrow } : styles.imgGallery}>
+                  {block.images.map((img, k) => {
+                    const isVideo = /\.(mp4|webm|mov)$/i.test(img.src || '')
+                    if (img.loom) {
+                      return (
+                        <figure key={k} style={styles.imgFigure}>
+                          <div style={styles.videoWrap}>
+                            <iframe src={img.loom.replace('/share/', '/embed/')} style={styles.videoFrame} allowFullScreen title={img.alt || 'Démo vidéo'} />
+                          </div>
+                          {img.caption && <figcaption style={styles.imgCaption}>{img.caption}</figcaption>}
+                        </figure>
+                      )
+                    }
+                    return (
+                      <figure key={k} style={styles.imgFigure}>
+                        {isVideo ? (
+                          <video
+                            src={img.src}
+                            poster={img.poster}
+                            controls
+                            preload="metadata"
+                            playsInline
+                            style={styles.imgEl}
+                            aria-label={img.alt || ''}
+                          />
+                        ) : (
+                          <img
+                            src={img.src}
+                            alt={img.alt || ''}
+                            style={styles.imgElClickable}
+                            onClick={() => setLightbox({ src: img.src, alt: img.alt || '' })}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault()
+                                setLightbox({ src: img.src, alt: img.alt || '' })
+                              }
+                            }}
+                          />
+                        )}
+                        {img.caption && (
+                          <figcaption style={styles.imgCaption}>{img.caption}</figcaption>
+                        )}
+                      </figure>
+                    )
+                  })}
                 </div>
-              )}
-              {block.video && <Media item={{ loom: block.video }} />}
+              ) : block.image ? (
+                <div style={styles.imgPlaceholder}>
+                  <span style={styles.imgPlaceholderText}>{block.image}</span>
+                </div>
+              ) : null}
             </div>
           ))}
         </div>
@@ -197,37 +259,32 @@ export default function ProjectCard({ project }) {
           )}
         </div>
       )}
-    </article>
-  )
-}
 
-// ─── Média : image réelle, vidéo Loom ou placeholder ───
-// - texte simple  → cadre placeholder en pointillés
-// - { src, alt, caption } → vraie image (fichier dans public/images/)
-// - { loom: 'https://www.loom.com/share/...' } → vidéo Loom intégrée
-function Media({ item }) {
-  if (typeof item === 'string') {
-    return (
-      <div style={styles.imgPlaceholder}>
-        <span style={styles.imgPlaceholderText}>{item}</span>
-      </div>
-    )
-  }
-  if (item.loom) {
-    const embed = item.loom.replace('/share/', '/embed/')
-    return (
-      <figure style={styles.mediaFigure}>
-        <div style={styles.videoWrap}>
-          <iframe src={embed} style={styles.videoFrame} allowFullScreen title={item.caption || 'Démo vidéo'} />
+      {/* LIGHTBOX */}
+      {lightbox && (
+        <div
+          style={styles.lightboxBackdrop}
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={lightbox.alt || 'Image agrandie'}
+        >
+          <button
+            type="button"
+            style={styles.lightboxClose}
+            onClick={() => setLightbox(null)}
+            aria-label="Fermer"
+          >
+            ×
+          </button>
+          <img
+            src={lightbox.src}
+            alt={lightbox.alt}
+            style={styles.lightboxImg}
+            onClick={(e) => e.stopPropagation()}
+          />
         </div>
-        {item.caption && <figcaption style={styles.mediaCaption}>{item.caption}</figcaption>}
-      </figure>
-    )
-  }
-  return (
-    <figure style={styles.mediaFigure}>
-      <img src={item.src} alt={item.alt || item.caption || ''} loading="lazy" style={styles.mediaImg} />
-      {item.caption && <figcaption style={styles.mediaCaption}>{item.caption}</figcaption>}
-    </figure>
+      )}
+    </article>
   )
 }

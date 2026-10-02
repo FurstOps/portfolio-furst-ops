@@ -17,6 +17,7 @@
 // ───────────────────────────────────────────────────────────────
 
 export const INTRO = {
+  name: 'Frédérick Furst',
   tag: '// product_builder.no_code × ia',
   headline: [
     'Je conçois et je livre des',
@@ -54,6 +55,7 @@ export const STACK = [
   { name: 'Lovable', role: 'Prototypage IA-assisté', level: 'Intermédiaire' },
   { name: 'Bubble', role: 'Apps complexes · Logique métier', level: 'Intermédiaire' },
   { name: 'Fillout', role: 'Formulaires connectés', level: 'Confirmé' },
+  { name: 'Claude Design', role: 'Design IA-assisté · UI mobile & web', level: 'Intermédiaire' },
 ]
 
 // ───────────────────────────────────────────────────────────────
@@ -181,10 +183,11 @@ export const PROJECTS = [
             title: 'Créer une balade depuis son téléphone',
             text: "Parcours guidé, adresse de départ suggérée à partir du référentiel officiel des communes, puis capture sur le terrain avec **deux grands boutons** (Étape / Point d'intérêt) : moins d'erreurs de toucher en marchant. Choix guidé par la mesure : 47 % d'étapes, 43 % de points d'intérêt — aucun bouton ne devait dominer.",
             images: [
-              { src: '/images/dcartes/tableau-de-bord.webp', caption: 'Tableau de bord du marcheur' },
-              { src: '/images/dcartes/creer-balade.webp', caption: 'Création guidée d\'une balade' },
-              { src: '/images/dcartes/hors-ligne.webp', caption: 'Préparer une zone hors ligne' },
+              { src: '/images/dcartes/tableau-de-bord.webp', alt: "Écran D-Cartes : tableau de bord du marcheur avec ses balades, en cours et publiées", caption: 'D-Cartes · tableau de bord' },
+              { src: '/images/dcartes/creer-balade.webp', alt: "Écran D-Cartes : création guidée d'une balade, étape 1 le départ avec adresse et ville suggérées", caption: 'D-Cartes · créer une balade' },
+              { src: '/images/dcartes/hors-ligne.webp', alt: "Écran D-Cartes : téléchargement d'une zone de carte pour partir sans réseau, poids annoncé", caption: 'D-Cartes · préparer le hors-ligne' },
             ],
+            imagesNarrow: true,
           },
           {
             title: 'Partir sans réseau',
@@ -222,7 +225,7 @@ export const PROJECTS = [
               'Préproduction prête sur la même infrastructure, sauvegardes testées',
               'Mise en production visée **mi-décembre 2026**',
             ],
-            // 👉 Ajouter une démo : video: 'https://www.loom.com/share/XXXXXXXX',
+            // 👉 Ajouter une démo Loom : images: [{ loom: 'https://www.loom.com/share/XXXX', caption: 'Démo' }],
           },
         ],
       },
@@ -301,7 +304,18 @@ export const PROJECTS = [
               "Modèle de données Airtable : **6 tables reliées** autour de l'entité centrale **Compétition**",
               'Pilotage en sprints documenté → "6 sprints · 6 fois Terminé"',
             ],
-            image: '[ visuel · Notion timeline 6 sprints + modèle Airtable ]',
+            images: [
+              {
+                src: '/screenshots/notion-timeline-sprints.png',
+                alt: 'Timeline Notion des 6 sprints de janvier à mars 2026, tous marqués Terminé',
+                caption: 'Notion · timeline 6 sprints',
+              },
+              {
+                src: '/screenshots/airtable-schema.png',
+                alt: 'Schéma relationnel Airtable : Clubs, Contacts, Compétitions, Equipe, Matchs, Contacts PlayOff',
+                caption: 'Airtable · modèle de données',
+              },
+            ],
           },
           {
             title: 'Semaines 3-4 — De la base aux automatisations',
@@ -310,7 +324,13 @@ export const PROJECTS = [
               'Formulaire client : inscrire sans accès direct à la base',
               '**Benchmark Make vs Zapier vs n8n** documenté → Make choisi (seul outil vert sur tous les critères critiques)',
             ],
-            image: '[ visuel · Benchmark Make / Zapier / n8n ]',
+            images: [
+              {
+                src: '/screenshots/benchmark-make-zapier-n8n.png',
+                alt: 'Tableau comparatif Airtable automations / Make / Zapier / n8n sur 10 critères',
+                caption: 'Benchmark · Make vs Zapier vs n8n',
+              },
+            ],
           },
           {
             title: 'Semaines 4-5 — Deux scénarios Make en production',
@@ -339,6 +359,24 @@ export const PROJECTS = [
               },
             ],
             quote: "Une automatisation ne doit jamais échouer sans laisser de trace.",
+            images: [
+              {
+                src: '/screenshots/make-scenario-validation-equipes.png',
+                alt: 'Scénario Make complet : surveille statut équipes, router 5+/-5 joueurs, mise à jour Airtable, recherche capitaines, email confirmation, Google Calendar',
+                caption: 'Scénario 01 · validation des équipes',
+              },
+              {
+                src: '/screenshots/make-scenario-brief-competition.png',
+                alt: 'Scénario Make complet : déclenchement inscriptions clôturées, récupération responsable, génération brief Google Docs, conversion PDF, envoi Ops, nettoyage et mise à jour Airtable',
+                caption: 'Scénario 02 · génération du brief',
+              },
+              {
+                src: '/screenshots/make-scenario-brief-demo.mp4',
+                poster: '/screenshots/make-scenario-brief-competition.png',
+                alt: 'Démo vidéo : exécution réelle du scénario Make de génération du brief compétition (~2 min)',
+                caption: 'Démo · génération brief en exécution',
+              },
+            ],
           },
         ],
       },
@@ -350,7 +388,13 @@ export const PROJECTS = [
           {
             title: 'Semaine 6 — Design System Figma',
             text: "Nouveau défi : concevoir une app de location de terrains entre amis. L'identité visuelle de PlayOff existait — mon rôle : la formaliser en système réutilisable. **4 couleurs · 2 typographies · composants réutilisables**, plus les écrans clés (accueil, recherche terrain, réservation).",
-            image: '[ visuel · Design System Figma + écrans clés ]',
+            images: [
+              {
+                src: '/screenshots/figma-design-system.png',
+                alt: 'Design System Figma PlayOff Amateurs : palette 4 couleurs, typographie Inter/Open Sans, composants, principes de design, et 2 écrans (accueil avec terrains, réservation avec créneau)',
+                caption: 'Figma · design system + écrans clés',
+              },
+            ],
           },
           {
             title: 'Semaine 7 — Démo cliquable Lovable',
@@ -361,7 +405,23 @@ export const PROJECTS = [
               'Récapitulatif & répartition des frais par joueur',
             ],
             textAfter: "En quelques heures, l'idée devient cliquable. Le concept est validé par la Direction. Cap sur le développement réel.",
-            image: '[ visuel · 3 écrans Lovable ]',
+            images: [
+              {
+                src: '/screenshots/lovable-accueil.png',
+                alt: 'Écran Lovable accueil : Bonjour Frederick, barre de recherche par ville, filtres par sport (Foot 5, Basket, Padel, Tennis), liste terrains populaires',
+                caption: 'Lovable · accueil',
+              },
+              {
+                src: '/screenshots/lovable-terrain-detail.png',
+                alt: 'Écran Lovable détail terrain : carte Google Maps localisation, choix de la date (semaine), créneaux horaires disponibles',
+                caption: 'Lovable · fiche terrain + créneau',
+              },
+              {
+                src: '/screenshots/lovable-recap-paiement.png',
+                alt: 'Écran Lovable récapitulatif : terrain Basket City, date, horaire, total 45€, répartition indicative 4,50€ par joueur sur 10 joueurs, bouton Confirmer et payer',
+                caption: 'Lovable · récap + répartition',
+              },
+            ],
           },
           {
             title: 'Semaines 8-9 — Architecture technique assumée',
@@ -373,6 +433,13 @@ export const PROJECTS = [
             ],
             textAfter: 'Services externes intégrés : **Stripe** (paiement), **Google Maps** (géoloc), **Gmail** (confirmation). Limites MVP assumées : Make et Stripe réintégrables en V2.',
             quote: 'Bubble = cœur du produit · Services externes = fonctionnalités spécialisées · Rien de plus.',
+            images: [
+              {
+                src: '/screenshots/bubble-architecture.png',
+                alt: 'Diagramme architecture Full Bubble : nuage Bubble central (UI, BDD, logique métier, auth, workflows) entouré des services externes Stripe, Google Maps, Gmail, OAuth',
+                caption: 'Architecture · Full Bubble',
+              },
+            ],
           },
           {
             title: 'Semaines 10-11 — MVP Bubble de bout en bout',
@@ -390,13 +457,46 @@ export const PROJECTS = [
               'Email de confirmation réel',
               'Privacy rules appliquées',
             ],
-            image: '[ visuel/vidéo · démo MVP Bubble ]',
+            images: [
+              {
+                src: '/screenshots/bubble-mvp-demo.mp4',
+                poster: '/screenshots/bubble-mvp-accueil.png',
+                alt: 'Démo vidéo : parcours complet MVP Bubble — création compte, recherche terrain, fiche + Maps, choix créneau, confirmation et email (~3 min)',
+                caption: 'Démo · MVP Bubble parcours complet',
+              },
+              {
+                src: '/screenshots/bubble-mvp-accueil.png',
+                alt: 'MVP Bubble écran accueil "Trouvez votre terrain" : recherche Google Maps, filtres par sport, grille de terrains',
+                caption: 'MVP Bubble · accueil',
+              },
+              {
+                src: '/screenshots/bubble-mvp-detail.png',
+                alt: 'MVP Bubble fiche terrain Stade des Lilas (Mulhouse) : carte Maps, choix date semaine, créneaux horaires, récapitulatif avec répartition indicative 12€/joueur',
+                caption: 'MVP Bubble · fiche + créneau',
+              },
+              {
+                src: '/screenshots/bubble-mvp-confirmation.png',
+                alt: 'MVP Bubble popup "Votre réservation est confirmée" : récap terrain, date, heure, prix 120€, message équipe PlayOff Amateurs',
+                caption: 'MVP Bubble · confirmation',
+              },
+            ],
           },
           {
             title: 'Sprint 6 — Audit sécurité dédié',
             text: '**23 points de contrôle · 6 catégories · preuves documentées dans Airtable**. Catégories couvertes : Collaboration, Configuration, Workflow, Éditeur, Data, API. Statuts : Présent · Corrigé · N/A.',
             quote: "Tester ne suffit pas. Documenter la preuve, c'est ce qui rend une application transmissible et défendable.",
-            image: '[ visuel · grille audit sécurité 23 points ]',
+            images: [
+              {
+                src: '/screenshots/audit-securite-1.png',
+                alt: 'Grille audit sécurité Bubble lignes 1-13 : Collaboration, Configuration, Workflow, Éditeur — colonnes Nom, Explication, Catégorie, Statut, Capture',
+                caption: 'Audit · catégories Collab/Config/Workflow/Éditeur',
+              },
+              {
+                src: '/screenshots/audit-securite-2.png',
+                alt: 'Grille audit sécurité Bubble lignes 12-22 : Éditeur, Data, Structure, API — statuts Présent, Corrigé, Non applicable avec preuves',
+                caption: 'Audit · catégories Data/Structure/API',
+              },
+            ],
           },
         ],
       },
@@ -450,9 +550,11 @@ export const PROCESS_STEPS = [
 // ───────────────────────────────────────────────────────────────
 
 export const CONTACT = {
+  portrait: '/portrait.png',
+  portraitAlt: 'Portrait de Frédérick Furst',
   email: 'ffurst@furst-ops.com',
   emailHref: 'mailto:ffurst@furst-ops.com',
-  linkedin: '/in/frederick-furst',
+  linkedin: '/in/frederick-furst-34682890',
   linkedinHref: 'https://www.linkedin.com/in/frederick-furst-34682890',
   // Formulaire de contact Fillout (embarqué dans la section + lien direct de secours)
   formId: 'h1Q4GdZ1kGus',

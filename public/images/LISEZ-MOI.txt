@@ -1,14 +1,10 @@
-Dépose ici tes captures d'écran (png / jpg / webp, idéalement < 500 Ko).
-  - dcartes/  → visuels de l'étude de cas D-Cartes
-  - playoff/  → visuels de l'étude de cas PlayOff Amateurs
+Dépose ici tes nouvelles captures (png / jpg / webp, idéalement < 500 Ko).
+Les captures PlayOff sont dans public/screenshots/.
 
-Dans src/data/content.js, remplace la ligne placeholder du bloc concerné :
-  image: '[ visuel · ... ]'
-par :
-  image: { src: '/images/playoff/mon-fichier.png', caption: 'Ma légende' },
-
-Plusieurs images côte à côte :
-  images: [ { src: '/images/...', caption: '...' }, { src: '/images/...' } ],
-
-Vidéo Loom (lien de partage) :
-  video: 'https://www.loom.com/share/xxxxxxxx',
+Dans src/data/content.js, ajoute dans le bloc concerné :
+  images: [
+    { src: '/images/dcartes/mon-fichier.png', alt: 'Description pour l\'accessibilité', caption: 'Ma légende' },
+  ],
+Une vidéo mp4 : { src: '/screenshots/demo.mp4', poster: '/screenshots/image.png', caption: 'Démo' }
+Une vidéo Loom : { loom: 'https://www.loom.com/share/xxxxxxxx', caption: 'Démo' }
+Captures de téléphone (étroites) : ajoute  imagesNarrow: true  dans le bloc.

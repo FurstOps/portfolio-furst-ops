@@ -1,10 +1,22 @@
 import { styles } from '../styles/styles'
-import { INTRO } from '../data/content'
+import { INTRO, CONTACT } from '../data/content'
 
 export default function SectionIntro() {
   return (
     <section id="intro" style={styles.section}>
-      <div style={styles.tag}>{INTRO.tag}</div>
+      <div style={styles.identityRow}>
+        {CONTACT.portrait && (
+          <img
+            src={CONTACT.portrait}
+            alt={CONTACT.portraitAlt || INTRO.name}
+            style={styles.identityPortrait}
+          />
+        )}
+        <div style={styles.identityText}>
+          {INTRO.name && <div style={styles.identityName}>{INTRO.name}</div>}
+          <div style={styles.tag}>{INTRO.tag}</div>
+        </div>
+      </div>
 
       <h1 style={styles.h1}>
         {INTRO.headline.map((part, i) => (

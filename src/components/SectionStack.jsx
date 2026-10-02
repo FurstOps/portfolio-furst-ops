@@ -21,8 +21,8 @@ export default function SectionStack() {
               <span
                 style={{
                   ...styles.levelBadge,
-                  color: tool.level === 'Confirmé' ? '#a3ff5e' : '#5dd5ff',
-                  borderColor: tool.level === 'Confirmé' ? '#a3ff5e' : '#5dd5ff',
+                  color: tool.level === 'Confirmé' ? '#5ea3ff' : '#5dd5ff',
+                  borderColor: tool.level === 'Confirmé' ? '#5ea3ff' : '#5dd5ff',
                 }}
               >
                 {tool.level}

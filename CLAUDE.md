@@ -60,21 +60,31 @@ Quand Frédérick demande :
 
 ## Style visuel à respecter
 
-Direction artistique : **dark mode tech / lab terminal, accents néon**.
+Direction artistique : **dark mode tech / lab terminal, accent bleu électrique** (identité du site en ligne depuis mai 2026).
 
 - **Background** : `#0a0d0c` (noir-vert très sombre)
-- **Vert néon (accent principal)** : `#a3ff5e`
+- **Bleu électrique (accent principal)** : `#5ea3ff`
 - **Cyan secondaire** : `#5dd5ff`
 - **Rouge warning** : `#ff6b6b`
 - **Texte principal** : `#d8e0dc`
 - **Texte blanc cassé** : `#f0f5f2`
 - **Gris muets** : `#5a6260`, `#8a9590`, `#b8c2bd`
 
-**Typographies (déjà chargées via Google Fonts) :**
-- `JetBrains Mono` pour tous les éléments techniques, métadonnées, navigation
-- `Fraunces` (serif italique) pour les grands titres, les noms d'outils/projets, les citations
+**Typographies (chargées via Google Fonts dans global.css) :**
+- `Space Mono` pour tous les éléments techniques, métadonnées, navigation
+- `Instrument Serif` (serif italique) pour les grands titres, les noms d'outils/projets, les citations
 
 Ne casse jamais cette identité visuelle sans demander confirmation.
+
+## Visuels des case studies
+
+- Captures PlayOff : `public/screenshots/` · captures D-Cartes : `public/images/dcartes/` · portrait : `public/portrait.png`
+- Dans un bloc de `content.js` : `images: [{ src, alt, caption }]` (galerie, clic = zoom). Vidéo mp4 : `{ src: '...mp4', poster }`. Loom : `{ loom: 'https://www.loom.com/share/...' }`. Captures mobiles : `imagesNarrow: true`.
+- Ne jamais publier de capture contenant des données personnelles ou des codes/identifiants (flouter avant).
+
+## Hébergement
+
+Le site en ligne (furst-ops.com) est sur **Netlify** (projet `furst-ops-pf`), déployé par glisser-déposer du dossier `dist/`.
 
 ## Conventions de code
 

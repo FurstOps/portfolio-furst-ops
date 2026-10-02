@@ -12,7 +12,9 @@ import SectionContact from './components/SectionContact'
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('intro')
 
-  // Observe quelle section est visible pour mettre à jour la nav
+  // Observe quelle section traverse la bande centrale de l'écran pour mettre à jour la nav.
+  // rootMargin "-40% 0px -40% 0px" crée une bande horizontale au milieu du viewport :
+  // la section active = celle qui passe dans ces 20% centraux, indépendamment de sa hauteur.
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -20,7 +22,7 @@ export default function Portfolio() {
           if (entry.isIntersecting) setActiveSection(entry.target.id)
         })
       },
-      { threshold: 0.3 }
+      { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
     )
     document.querySelectorAll('section[id]').forEach((sec) => observer.observe(sec))
     return () => observer.disconnect()
