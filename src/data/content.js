@@ -614,7 +614,7 @@ export const CONTACT = {
 // ───────────────────────────────────────────────────────────────
 
 export const META = {
-  version: 'v0.4',
+  version: 'v0.5',
   lastUpdate: '2026.10',
   location: 'FR · THEYS',
   copyright: '© 2026 — Furst Ops · Theys, FR',
