@@ -31,11 +31,12 @@ portfolio-furst-ops/
         ├── SideNav.jsx           # Nav latérale
         ├── SectionHeader.jsx     # Header de section réutilisable
         ├── SectionIntro.jsx      # Section 01 (hero)
-        ├── SectionStack.jsx      # Section 02 (outils)
-        ├── SectionWork.jsx       # Section 03 (case studies)
+        ├── SectionParcours.jsx   # Section 02 (parcours pro : timeline + atouts)
+        ├── SectionWork.jsx       # Section 03 (menu cliquable des projets + case study affiché)
         ├── ProjectCard.jsx       # Carte projet (utilisée par SectionWork)
-        ├── SectionProcess.jsx    # Section 04 (méthodo)
-        ├── SectionContact.jsx    # Section 05 (contact)
+        ├── SectionStack.jsx      # Section 04 (outils)
+        ├── SectionProcess.jsx    # Section 05 (méthodo)
+        ├── SectionContact.jsx    # Section 06 (contact)
         └── helpers.jsx           # Utilitaires (parseInline pour le **gras**)
 ```
 
@@ -45,8 +46,9 @@ portfolio-furst-ops/
 
 C'est le fichier central qui contient :
 - L'intro et le tag de positionnement
+- Le parcours professionnel (`PARCOURS` : timeline, chiffres, atouts)
 - La stack d'outils
-- Les case studies (projets)
+- Les case studies (projets) — chaque projet a un `pitch` court affiché dans le menu
 - Les étapes du process
 - Les coordonnées de contact
 

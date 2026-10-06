@@ -53,6 +53,10 @@ section {
   .side-nav {
     display: none !important;
   }
+  .timeline-item {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
   main {
     padding-left: 24px !important;
     padding-right: 24px !important;

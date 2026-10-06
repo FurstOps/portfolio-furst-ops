@@ -65,7 +65,7 @@ export const styles = {
   },
   main: {
     position: 'relative', zIndex: 1,
-    paddingLeft: '120px', paddingRight: '80px', paddingTop: '80px',
+    paddingLeft: '200px', paddingRight: '80px', paddingTop: '80px',
     maxWidth: '1400px', margin: '0 auto',
   },
   section: {
@@ -158,6 +158,69 @@ export const styles = {
     fontSize: '10px', border: '1px solid', padding: '4px 10px',
     borderRadius: '2px', letterSpacing: '0.1em', textTransform: 'uppercase',
   },
+  // ── MENU PROJETS ──
+  projectMenu: {
+    display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+    gap: '16px', marginBottom: '48px',
+  },
+  projectTile: {
+    all: 'unset', boxSizing: 'border-box', cursor: 'pointer',
+    display: 'flex', flexDirection: 'column', gap: '12px',
+    padding: '28px', minHeight: '220px',
+    border: '1px solid rgba(94, 163, 255, 0.15)',
+    background: 'rgba(94, 163, 255, 0.02)',
+    transition: 'all 0.25s ease',
+    fontFamily: "'Space Mono', 'JetBrains Mono', monospace",
+  },
+  projectTileActive: {
+    border: '1px solid #5ea3ff',
+    background: 'rgba(94, 163, 255, 0.07)',
+    boxShadow: '0 0 24px rgba(94, 163, 255, 0.15)',
+  },
+  projectTileTop: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '12px' },
+  projectTileIndex: { fontSize: '11px', color: '#5ea3ff', letterSpacing: '0.1em' },
+  projectTileStatus: {
+    fontSize: '10px', color: '#5ea3ff', letterSpacing: '0.15em',
+    border: '1px solid rgba(94, 163, 255, 0.4)', padding: '3px 8px',
+  },
+  projectTileTitle: {
+    fontFamily: "'Instrument Serif', 'Fraunces', serif",
+    fontSize: '30px', lineHeight: 1.1, color: '#f0f5f2',
+  },
+  projectTilePitch: { fontSize: '13px', color: '#b8c2bd', lineHeight: 1.5 },
+  projectTileMeta: { fontSize: '11px', color: '#5a6260', letterSpacing: '0.08em' },
+  projectTileCta: { fontSize: '11px', letterSpacing: '0.1em', marginTop: 'auto' },
+  // ── PARCOURS ──
+  parcoursStats: {
+    display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+    gap: '1px', background: 'rgba(94, 163, 255, 0.15)',
+    border: '1px solid rgba(94, 163, 255, 0.15)', marginBottom: '56px',
+  },
+  timeline: { display: 'flex', flexDirection: 'column', marginBottom: '56px' },
+  timelineItem: {
+    display: 'grid', gridTemplateColumns: '140px 1fr', gap: '32px',
+    padding: '28px 0', borderTop: '1px solid rgba(94, 163, 255, 0.15)',
+  },
+  timelinePeriod: { fontSize: '12px', color: '#5ea3ff', letterSpacing: '0.1em', paddingTop: '8px' },
+  timelineBody: { display: 'flex', flexDirection: 'column', gap: '6px' },
+  timelineTitle: {
+    fontFamily: "'Instrument Serif', 'Fraunces', serif",
+    fontSize: '28px', color: '#f0f5f2', lineHeight: 1.15,
+  },
+  timelineOrg: { fontSize: '12px', color: '#8a9590', letterSpacing: '0.08em' },
+  timelineText: { fontSize: '14px', color: '#b8c2bd', lineHeight: 1.7, maxWidth: '720px', marginTop: '6px' },
+  strengthGrid: {
+    display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px',
+  },
+  strengthCard: {
+    border: '1px solid rgba(94, 163, 255, 0.15)', padding: '24px',
+    background: 'rgba(94, 163, 255, 0.02)',
+  },
+  strengthTitle: {
+    fontFamily: "'Instrument Serif', 'Fraunces', serif",
+    fontSize: '22px', color: '#f0f5f2', marginBottom: '8px', lineHeight: 1.2,
+  },
+  strengthDesc: { fontSize: '13px', color: '#8a9590', lineHeight: 1.6 },
   projectCard: {
     border: '1px solid rgba(94, 163, 255, 0.2)',
     padding: '48px', marginBottom: '24px',

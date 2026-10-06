@@ -5,7 +5,7 @@ import SectionHeader from './SectionHeader'
 export default function SectionStack() {
   return (
     <section id="stack" style={styles.section}>
-      <SectionHeader num="02" title="STACK / OUTILS" />
+      <SectionHeader num="04" title="STACK / OUTILS" />
 
       <p style={styles.sectionLead}>
         Une stack volontairement resserrée. Chaque outil a un rôle précis. Pas de hype, pas de gadget.

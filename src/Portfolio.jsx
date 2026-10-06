@@ -4,6 +4,7 @@ import { styles } from './styles/styles'
 import TopBar from './components/TopBar'
 import SideNav from './components/SideNav'
 import SectionIntro from './components/SectionIntro'
+import SectionParcours from './components/SectionParcours'
 import SectionStack from './components/SectionStack'
 import SectionWork from './components/SectionWork'
 import SectionProcess from './components/SectionProcess'
@@ -39,8 +40,9 @@ export default function Portfolio() {
 
       <main style={styles.main}>
         <SectionIntro />
-        <SectionStack />
+        <SectionParcours />
         <SectionWork />
+        <SectionStack />
         <SectionProcess />
         <SectionContact />
       </main>

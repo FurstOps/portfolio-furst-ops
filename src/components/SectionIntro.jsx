@@ -38,7 +38,7 @@ export default function SectionIntro() {
         ))}
       </div>
 
-      <a href="#work" style={styles.scrollCue}>↓ explore_the_work</a>
+      <a href="#parcours" style={styles.scrollCue}>↓ mon_parcours · mes_projets</a>
     </section>
   )
 }

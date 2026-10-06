@@ -5,7 +5,7 @@ import SectionHeader from './SectionHeader'
 export default function SectionProcess() {
   return (
     <section id="process" style={styles.section}>
-      <SectionHeader num="04" title="PROCESS" />
+      <SectionHeader num="05" title="PROCESS" />
 
       <p style={styles.sectionLead}>
         Une méthode simple, agile, documentée. Pas de boîte noire.

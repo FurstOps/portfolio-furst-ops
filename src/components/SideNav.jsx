@@ -2,10 +2,11 @@ import { styles } from '../styles/styles'
 
 const SECTIONS = [
   { id: 'intro', label: '01 / intro' },
-  { id: 'stack', label: '02 / stack' },
-  { id: 'work', label: '03 / work' },
-  { id: 'process', label: '04 / process' },
-  { id: 'contact', label: '05 / contact' },
+  { id: 'parcours', label: '02 / parcours' },
+  { id: 'work', label: '03 / projets' },
+  { id: 'stack', label: '04 / stack' },
+  { id: 'process', label: '05 / process' },
+  { id: 'contact', label: '06 / contact' },
 ]
 
 export default function SideNav({ activeSection }) {

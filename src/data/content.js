@@ -59,6 +59,51 @@ export const STACK = [
 ]
 
 // ───────────────────────────────────────────────────────────────
+// SECTION PARCOURS — ton expérience d'avant le no-code
+// ───────────────────────────────────────────────────────────────
+// 👉 À compléter : intitulés de postes exacts, dates, villes.
+//    Ajoute une ligne par poste dans `timeline` (la plus récente en haut).
+
+export const PARCOURS = {
+  lead: "25 ans à recruter, manager et comprendre le métier de mes clients. Aujourd'hui, je mets cette expérience au service de produits digitaux.",
+
+  stats: [
+    { num: '25', label: "ans dans le recrutement & les RH" },
+    { num: '3', label: 'grands groupes du recrutement' },
+    { num: '2026', label: 'reconversion product builder' },
+  ],
+
+  timeline: [
+    {
+      period: '2026 →',
+      title: 'Fondateur · Furst Ops',
+      org: 'Product Builder no-code & IA · freelance',
+      text: "Je conçois et livre des produits digitaux pour des PME et des organisations à impact. Mission en cours : **D-Cartes**, pour le programme national D-marche®.",
+    },
+    {
+      period: '2026',
+      title: 'Bootcamp NoCode Product Builder',
+      org: 'École Cube · certification RNCP 39108',
+      text: "Reconversion assumée : 12 semaines de projet réel (**PlayOff Amateurs**) sur Notion, Airtable, Make, Figma, Lovable et Bubble.",
+    },
+    {
+      period: '~25 ans',
+      title: 'Recrutement & management RH',
+      org: 'Randstad · Védiorbis · Adecco',
+      text: "Recrutement et management RH au sein de grands groupes du travail temporaire et du recrutement : comprendre le besoin d'une entreprise, trouver les bons profils, animer des équipes et tenir des objectifs.",
+    },
+  ],
+
+  strengthsTitle: 'Ce que ce parcours apporte à mes clients',
+  strengths: [
+    { title: "Écouter avant de construire", desc: "Des années à décrypter le vrai besoin derrière une demande : c'est le point de départ de tout bon produit." },
+    { title: 'Parler le langage du métier', desc: "Ops, RH, terrain : je comprends vos contraintes avant de parler outils." },
+    { title: 'Piloter & tenir les engagements', desc: "Prioriser, organiser, rendre compte : la rigueur du management appliquée à chaque projet." },
+    { title: "L'œil sur les process", desc: "Je sais où une organisation perd du temps — et donc où l'automatisation rapporte vraiment." },
+  ],
+}
+
+// ───────────────────────────────────────────────────────────────
 // SECTION CASE STUDIES
 // ───────────────────────────────────────────────────────────────
 // Pour ajouter un nouveau projet, dupliquer un objet ci-dessous.
@@ -68,7 +113,8 @@ export const PROJECTS = [
   {
     id: 'dcartes',
     tag: 'case_study_01 · mission_client · association_ADAL',
-    title: 'D-Cartes · Programme D-marche®',
+    title: 'D-Cartes · Programme D‑marche®',
+    pitch: "Application de création et de partage de balades pour un programme national de santé publique dédié aux seniors.",
     subtitle: "Reconstruire de A à Z l'application de création et de partage de balades d'un programme national de santé publique dédié à la marche des seniors — de la maquette jusqu'à la mise en production.",
     status: 'EN RECETTE',
     period: 'Juin 2026 → mise en ligne visée mi-décembre 2026',
@@ -245,6 +291,7 @@ export const PROJECTS = [
     id: 'playoff',
     tag: 'case_study_02 · bootcamp_RNCP39108 · école_cube',
     title: 'PlayOff Amateurs',
+    pitch: "Back-office automatisé et MVP de réservation de terrains pour une PME sportive.",
     subtitle: '12 semaines pour transformer une PME sportive : structurer ses ops, puis lui livrer un MVP de réservation de terrains.',
     status: 'MVP LIVRÉ',
     period: 'Avril 2026',

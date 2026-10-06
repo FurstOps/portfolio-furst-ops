@@ -25,7 +25,7 @@ export default function SectionContact() {
 
   return (
     <section id="contact" style={styles.section}>
-      <SectionHeader num="05" title="CONTACT" />
+      <SectionHeader num="06" title="CONTACT" />
 
       <div style={styles.contactTop}>
         {CONTACT.portrait && (
